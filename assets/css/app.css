@@ -45,3 +45,9 @@
 #title{
     background-color: #b8daff;
 }
+
+.container-fluid{
+    background-image: url("../images/train-19640_1280.jpg");
+    background-color: rgba(255, 255, 255, 0.7);
+    background-blend-mode: lighten;
+}
