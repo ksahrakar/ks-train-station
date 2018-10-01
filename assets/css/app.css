@@ -51,3 +51,7 @@
     background-color: rgba(255, 255, 255, 0.7);
     background-blend-mode: lighten;
 }
+
+body{
+    color:#004085!important;
+}

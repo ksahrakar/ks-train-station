@@ -40,3 +40,17 @@ $("#subBtn").on("click",function(e){
     $("#tFreq").val("");
     $("#tFirst").val("");
 })
+
+db.ref().on("value",function(snsh){
+    snsh.forEach(function(snshObj){
+       var train = snshObj.val();
+       console.log(train);
+       rName = train.tName;
+       rDest = train.tDest;
+       rFreq = train.tFreq;
+       rFirst = train.tFreq;
+    });
+
+}, function(error){
+    console.log("the read failed"+error.code);
+});
