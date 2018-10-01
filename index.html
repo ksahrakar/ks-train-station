@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>KS Train Station</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="shortcut icon" href="assets/images/giphy.ico">
+    <link rel="stylesheet" type="text/css" media="screen" href="assets/css/reset.css" />
+    <link rel="stylesheet" type="text/css" media="screen" href="assets/css/app.css" />
+    <script src="main.js"></script>
+    <link href="https://fonts.googleapis.com/css?family=Unica+One" rel="stylesheet">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
+</head>
+
+<body>
+    <script src="https://www.gstatic.com/firebasejs/5.5.2/firebase.js"></script>
+    <script>
+    // Initialize Firebase
+    var config = {
+        apiKey: "AIzaSyCJnM6R5mO_anIl9bl1b8OPJKXxWZv_eek",
+        authDomain: "ks-train-station.firebaseapp.com",
+        databaseURL: "https://ks-train-station.firebaseio.com",
+        projectId: "ks-train-station",
+        storageBucket: "ks-train-station.appspot.com",
+        messagingSenderId: "162901958116"
+    };
+    firebase.initializeApp(config);
+    </script>
+<div class="container-fluid">
+    
+    <div id="title" class="jumbotron jumbotron-fluid">
+        <div class="container">
+            <h1 class="display-4">The KS Train Station</h1>
+            <p class="lead">Welcome to the most connected train station! EVER!</p>
+        </div>
+    </div>
+
+    <div id= "ticker" class="row">
+        <div class="col">
+            CURRENT TIME: <strong>13:12</strong>
+        </div>
+        <div class="col">
+            California Zephyr Arrives in <strong>5</strong> Minutes
+        </div>
+    </div>
+
+    <div class="row">
+
+        <div class="col-9">
+            <div id="schedHead" class="alert alert-primary">
+                    Train Schedule
+            </div>
+            <div class="table-responsive-sm">
+                <table class="table">
+                    <thead class="thead">
+                        <tr>
+                            <th scope="col">Name</th>
+                            <th scope="col">Destination</th>
+                            <th scope="col">Next Arrival</th>
+                            <th>Frequency</th>
+                            <th scope="col">Minutes Away</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <th scope="row">California Zephyr</th>
+                            <td>San Diego</td>
+                            <td>Otto</td>
+                            <td>45</td>
+                            <td>4</td>
+                        </tr>
+                        <tr>
+                            <th scope="row">Long Island Express</th>
+                            <td>Oakland</td>
+                            <td>Thornton</td>
+                            <td>106</td>
+                            <td>87</td>
+                        </tr>
+                        <tr>
+                            <th scope="row">Route 66</th>
+                            <td>Overton</td>
+                            <td>the Bird</td>
+                            <td>60</td>
+                            <td>13</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+
+        <div class="col-3">
+            <form>
+                <div id="adminHead" class="alert alert-primary">
+                        Administrative
+                </div>
+                <div class="form-group">
+                    <label for="exampleInputEmail1">Train name</label>
+                    <input class="form-control" id="exampleInputEmail1" placeholder="Train Name">
+                </div>
+                <div class="form-group">
+                    <label for="exampleInputEmail1">Destination</label>
+                    <input class="form-control" id="exampleInputEmail1" placeholder="Destination">
+                </div>
+                <div class="form-group">
+                    <label for="exampleInputPassword1">Frequency</label>
+                    <input class="form-control" id="exampleInputPassword1" placeholder="Frequency in Minutes">
+                </div>
+                <div class="form-group">
+                    <label for="exampleInputPassword1">First Train Departure</label>
+                    <input class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="First Train Format 0000">   
+                </div>
+                <button type="submit" class="btn btn-primary">Submit</button>
+            </form>
+        </div>
+
+    </div>
+
+
+</div>    
+    
+<div class="footer">
+    <span id="sign">&copy; 2018  Kamran Sahrakar</span>
+</div>
+
+</body>
+</html>
