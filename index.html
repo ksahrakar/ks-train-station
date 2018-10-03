@@ -14,6 +14,7 @@
 </head>
 
 <body>
+<script src="https://cdn.jsdelivr.net/momentjs/2.12.0/moment.min.js"></script>
 
 <div class="container-fluid">
     
@@ -25,11 +26,9 @@
     </div>
 
     <div id= "ticker" class="row">
-        <div class="col">
-            CURRENT TIME: <strong>13:12</strong>
-        </div>
-        <div class="col">
-            California Zephyr Arrives in <strong>5</strong> Minutes
+        <div class="col" id="clock"></div>
+        <div class="col" id="nextTrain">
+            <!-- Load with ticker info -->
         </div>
     </div>
 
@@ -40,7 +39,7 @@
                     Train Schedule
             </div>
             <div class="table-responsive-sm">
-                <table class="table">
+                <table class="table" id="tTable">
                     <thead class="thead">
                         <tr>
                             <th scope="col">Name</th>
@@ -51,27 +50,7 @@
                         </tr>
                     </thead>
                     <tbody>
-                        <tr>
-                            <th scope="row">California Zephyr</th>
-                            <td>San Diego</td>
-                            <td>Otto</td>
-                            <td>45</td>
-                            <td>4</td>
-                        </tr>
-                        <tr>
-                            <th scope="row">Long Island Express</th>
-                            <td>Oakland</td>
-                            <td>Thornton</td>
-                            <td>106</td>
-                            <td>87</td>
-                        </tr>
-                        <tr>
-                            <th scope="row">Route 66</th>
-                            <td>Overton</td>
-                            <td>the Bird</td>
-                            <td>60</td>
-                            <td>13</td>
-                        </tr>
+                        <!-- Rows added here -->
                     </tbody>
                 </table>
             </div>
@@ -96,7 +75,7 @@
                 </div>
                 <div class="form-group">
                     <label for="exampleInputPassword1">First Train Departure</label>
-                    <input class="form-control" id="tFirst" aria-describedby="emailHelp" placeholder="First Train Format 0000">   
+                    <input class="form-control" id="tFirst" aria-describedby="emailHelp" placeholder="Format 00:00">   
                 </div>
                 <button id="subBtn" type="submit" class="btn btn-primary">Submit</button>
             </form>
