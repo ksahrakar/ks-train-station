@@ -20,8 +20,9 @@ var rDest;
 var rFreq;
 var rFirst;
 
+var nextTrain = ["",1440];
 
-// Add a new train to schedule
+// Admin function to add a new train to the schedule
 $("#subBtn").on("click",function(e){
     e.preventDefault();
     name=$("#tName").val().trim();
@@ -46,42 +47,39 @@ $("#subBtn").on("click",function(e){
     $("#tFirst").val("");
 })
 
-// Detect if new train is added and add to table
+// Firebase listener for new train and add to table
 
 db.ref().on("child_added",function(snsh){
-       rName = snsh.val().tName;
-       rDest = snsh.val().tDest;
-       rFreq = parseInt(snsh.val().tFreq);
-       rFirst = moment(snsh.val().tFirst,"HH:mm");
-       var calced = calcTimes(rFreq,rFirst)
+    rName = snsh.val().tName;
+    rDest = snsh.val().tDest;
+    rFreq = parseInt(snsh.val().tFreq);
+    rFirst = moment(snsh.val().tFirst,"HH:mm");
+    var calced = calcTimes(rFreq,rFirst)
 
-        //Refresh next train info - NOT WORKING
-        // var nextTrain = ["",1440];
-        // if (parseInt(calced[0])<=nextTrain[1]){
-        //     nextTrain[0] = rName;
-        //     nextTrain[1] = parseInt(calced[0]);
-        //     $("#nextTrain").text(nextTrain[0]+" arrives in "+ nextTrain[1]+" minutes");
-        // }
+    // Next train info
+    if (parseInt(calced[0])<=nextTrain[1]){
+        nextTrain[0] = rName;
+        nextTrain[1] = parseInt(calced[0]);
+        $("#nextTrain").text("Next: '"+nextTrain[0]+"' arrives in "+ nextTrain[1]+" minutes");
+    }
 
-       // Create new row of data
-       var newRow = $("<tr>").append(
-        $("<th>").text(rName),
-        $("<td>").text(rDest),
-        $("<td>").text(moment(calced[1]).format("HH:mm")),
-        $("<td>").text(rFreq),
-        $("<td>").text(calced[0])
-        );
+    // Create new row of data
+    var newRow = $("<tr>").append(
+    $("<th>").text(rName),
+    $("<td>").text(rDest),
+    $("<td>").text(moment(calced[1]).format("HH:mm")),
+    $("<td>").text(rFreq),
+    $("<td>").text(calced[0])
+    );
 
-        
+    // Add row to table
+    $("#tTable > tbody").append(newRow);
 
-        // Add row to table
-        $("#tTable > tbody").append(newRow);
-
-        // Refresh once a minute - NOT WORKING
-        // function refresh(){
-        //     calced = calcTimes(rFreq,rFirst);
-        // }
-        // setInterval(refresh(),60000);
+    // Refresh table once a minute - NOT WORKING
+    function refresh(){
+        calced = calcTimes(rFreq,rFirst);
+    }
+    setInterval(refresh,60000);
 
 }, function(error){
     console.log("the read failed"+error.code);
@@ -93,7 +91,7 @@ function clock(){
 }
 setInterval(clock,1000);
 
-// Calculate time to next train
+// Calculate time to next train and arrival time - returns array
 function calcTimes(freq,first){
 var nextTrainMin;
 var nextTrainTime;    
