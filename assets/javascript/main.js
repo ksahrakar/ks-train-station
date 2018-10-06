@@ -75,12 +75,6 @@ db.ref().on("child_added",function(snsh){
     // Add row to table
     $("#tTable > tbody").append(newRow);
 
-    // Refresh table once a minute - NOT WORKING
-    function refresh(){
-        calced = calcTimes(rFreq,rFirst);
-    }
-    setInterval(refresh,60000);
-
 }, function(error){
     console.log("the read failed"+error.code);
 });
