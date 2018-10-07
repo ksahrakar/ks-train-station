@@ -30,8 +30,6 @@ $("#subBtn").on("click",function(e){
     freq=$("#tFreq").val();
     first=$("#tFirst").val();
 
-    //console.log(name);
-
     var train = {
         tName: name,
         tDest:dest,
@@ -48,7 +46,6 @@ $("#subBtn").on("click",function(e){
 })
 
 // Firebase listener for new train and add to table
-
 db.ref().on("child_added",function(snsh){
     rName = snsh.val().tName;
     rDest = snsh.val().tDest;
